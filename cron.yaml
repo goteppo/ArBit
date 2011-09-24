@@ -1,0 +1,4 @@
+cron:
+- description: check for arbitrage once per minute
+  url: /cron/
+  schedule: every 1 minutes

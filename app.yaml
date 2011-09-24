@@ -1,0 +1,18 @@
+application: arbit
+version: 1
+runtime: go
+api_version: 2
+
+handlers:
+- url: /cron/
+  script: _go_app
+  #login: admin
+  #auth_fail_action: unauthorized
+
+- url: /dashboard/
+  script: _go_app
+  login: required
+  
+- url: /.*
+  script: _go_app
+

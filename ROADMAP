@@ -1,0 +1,24 @@
+PRESENT:
+
+	ArBit is at it's initial version 0.10, which is an alpha release.
+
+	
+Known issues:
+
+	1. Support for Camp BX is otherwise complete but json.Unmarshal fails for some reason (maybe due to whitespaces in the field names?)
+	
+	2. Error/warning messages returned by the exchanges are ignored - for example:
+		- ExchB may return a JSON element "status" with messages such as "BTC balance too low to place sell order."
+		- TradeHill can return "error" element containing messages like "The smallest allowable transaction size is 1.00 USD."
+
+
+FUTURE:
+
+	Arbit 1.0 is planned to be released by the end of 2012 with all known issues fixed and TODO items completed across the files. Other planned features include: Automated BTC transfers between exchanges, using Websocket API for realtime market data (instead of current once-per-minute polling), not requiring Google App Engine SDK, and using goroutines for concurrent API calls (this would have been done already, but the App Engine runs only one thread and therefore there was no difference in execution time).
+
+	More Bitcoin exchanges (such as Bitcoinica) will be added.
+	
+	Eventually other digital currencies may also be added, but legitimate alternatives to Bitcoin need to be developed first and be traded on the major exchanges. (Nonsensical forks like Ixcoin do not qualify.)
+	
+	In addition to pure arbitrage, a more complete trading platform that makes it easy to write and backtest custom technical indicators and trading strategies may also be created.
+
