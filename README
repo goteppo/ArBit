@@ -1,0 +1,50 @@
+== About ArBit ==
+
+ArBit is an automated Bitcoin arbitrage trading program implemented in Go and written using Google App Engine SDK. It currently supports Mt Gox, TradeHill, and ExchB.
+
+I started writing ArBit after being impressed by the concept of so called "crypto currencies", and writing an arbitrage engine sounded like a non-trivial yet small enough project I could use for learning Go. And though I'm not a big believer in Bitcoin per se (the poor economic design alone begs for the project to be forked), it's technology is very promising and it has shown that digital currencies in general have a lot of potential.
+
+This is also my first ever open source contribution, so it is mostly a personal experiment with a primary goal of making myself a better programmer, and at the same time hopefully being useful to someone else too. I wrote the program in Go because it was the one language I really wanted to learn, and the reason for using the App Engine SDK was that it just made it so much easier to get started.
+
+The project is made of several packages containing the arbitrage engine, API functions for connecting to various Bitcoin exchanges, basic methods for storing data in the App Engine datastore, etc. They are all distributed under the LGPLv3 license.
+
+
+== Installation ==
+
+In order to run ArBit on your local machine, you will need to download and install 'Google App Engine SDK for GO' at:
+http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Go
+
+(I have only used the Linux 32-bit version and installed it on Ubuntu 11.04, so I don't know how easy it would be to set it up for Mac OS for example. Notice also, that you do *not* need to have Go installed prior to this step, as the App Engine SDK is "fully self-contained".)
+
+If you are using Linux like myself (Ubuntu 11.04), you can start the local App Engine server with the following command (just replace /path/to/ with the correct directory):
+/path/to/google_appengine/dev_appserver.py /path/to/ArBit
+
+And I actually also created the following launcher on my desktop (you might need to modify this depending on your setup):
+gnome-terminal -e "/path/to/google_appengine/dev_appserver.py /path/to/ArBit"
+
+And finally when the local App Engine server is running, I added the following line in my crontab to fully automate the arbitrage trading (by running ArBit once a minute):
+
+* * * * * curl localhost:8080/cron/
+
+Alternatively you could upload the application to Google's App Engine servers (http://code.google.com/appengine/docs/go/gettingstarted/uploading.html), or even try using it with AppScale (http://code.google.com/p/appscale/). But if you do upload it to App Engine you cannot use crontab as described above, and will need to set up the cron job based on the info on: http://code.google.com/appengine/docs/python/config/cron.html
+
+
+== FAQ ==
+
+Q: Does it really make profit risk-free?
+
+A: In theory, yes. Each arbitrage trade executed makes immediate profit risk-free (not considering external risks such as part of the trade failing to fill due to a technical error, inaccurate data from the exchange, or maybe another trader executing the same trade faster).
+
+In practice however, the process requires you to maintain a positive balance of both BTC and USD in your accounts, and that will expose you to an exchange rate risk that can be much higher than the expected profit from the arbitrage. Therefore any decline in the BTC prices would cause the dollar value of your portfolio to decline as well, and vice versa.
+
+Q: Do arbitrage opportunities really exist?
+
+At the time of writing this, there seems to be enough arbitrage opportunities available that even a slow once-per-minute strategy finds them pretty much every day.
+
+But it is obvious that there are other arbitrage traders out there, so the opportunities are relatively small, won't last for too long, and mostly appear during short rallies (up or down) where one exchange moves faster than the other. And of course, open source projects such as this one are only going to make the competition tougher.
+
+
+== Author ==
+
+Teppo Salonen <teppo.salonen@gmail.com>
+
