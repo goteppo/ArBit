@@ -1,6 +1,6 @@
 PRESENT:
 
-	ArBit is at it's initial version 0.10, which is an alpha release.
+	ArBit is at it's version 0.11, which is an alpha release.
 
 	
 Known issues:
@@ -14,11 +14,9 @@ Known issues:
 
 FUTURE:
 
-	Arbit 1.0 is planned to be released by the end of 2012 with all known issues fixed and TODO items completed across the files. Other planned features include: Automated BTC transfers between exchanges, using Websocket API for realtime market data (instead of current once-per-minute polling), not requiring Google App Engine SDK, and using goroutines for concurrent API calls (this would have been done already, but the App Engine runs only one thread and therefore there was no difference in execution time).
+	Arbit 1.0 is planned to be released by the end of 2012 with all known issues fixed and TODO items completed across the files. Other planned features include: Automated BTC transfers between exchanges, using Websocket API for realtime market data (instead of current once-per-minute polling), not requiring Google App Engine SDK, and using goroutines for concurrent API calls (which I had actually implemented already but since the App Engine runs only one thread, there was no difference in execution time in GAE).
 
-	More Bitcoin exchanges (such as Bitcoinica) will be added.
-	
-	Eventually other digital currencies may also be added, but legitimate alternatives to Bitcoin need to be developed first and be traded on the major exchanges. (Nonsensical forks like Ixcoin do not qualify.)
+	More Bitcoin exchanges (such as Bitcoinica) will be added. And eventually other digital currencies may also be added, but legitimate alternatives to Bitcoin need to be developed first and be traded on the major exchanges. (Nonsensical forks like Ixcoin do not qualify.)
 	
 	In addition to pure arbitrage, a more complete trading platform that makes it easy to write and backtest custom technical indicators and trading strategies may also be created.
 

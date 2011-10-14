@@ -64,12 +64,11 @@ type Balance struct {
 }
 
 type openOrder struct {
-	OrderType string "type" // "Buy", "Sell"
-	//	OrderType	string	`json:"type"`// r59 release
-	Oid    string // Unique order id
-	Price  string // Price of BTC in USD (the string contains a dollar sign!)
-	Amount string // Amount of BTC
-	Date   string
+	OrderType string `json:"type"` // "Buy", "Sell"
+	Oid       string // Unique order id
+	Price     string // Price of BTC in USD (the string contains a dollar sign!)
+	Amount    string // Amount of BTC
+	Date      string
 }
 
 // OpenOrders is a struct representing all our open buy and sell orders in the account.

@@ -19,14 +19,14 @@ type UniqueKeyer interface {
 // Put creates or updates a datastore entity of given kind - the entity is stored in |data| and implements interface |UniqueKeyer|.
 func Put(c appengine.Context, kind string, data UniqueKeyer) (err os.Error) {
 	stringId, intId := data.UniqueKey()
-	key := datastore.NewKey(kind, stringId, intId, nil)
+	key := datastore.NewKey(c, kind, stringId, intId, nil)
 	_, err = datastore.Put(c, key, data)
 	return
 }
 
 // KeyPut creates or updates a datastore entity of given kind - the entity is stored in |data| and has a unique key either in |sKey| or in |iKey|.
 func KeyPut(c appengine.Context, kind string, data interface{}, sKey string, iKey int64) (err os.Error) {
-	key := datastore.NewKey(kind, sKey, iKey, nil)
+	key := datastore.NewKey(c, kind, sKey, iKey, nil)
 	_, err = datastore.Put(c, key, data)
 	return
 }
@@ -34,14 +34,14 @@ func KeyPut(c appengine.Context, kind string, data interface{}, sKey string, iKe
 // Get retrieves a datastore entity of given kind based on the unique key found in |data|, and stores the entity back to |data|.
 func Get(c appengine.Context, kind string, data UniqueKeyer) (err os.Error) {
 	stringId, intId := data.UniqueKey()
-	key := datastore.NewKey(kind, stringId, intId, nil)
+	key := datastore.NewKey(c, kind, stringId, intId, nil)
 	err = datastore.Get(c, key, data)
 	return
 }
 
 // KeyGet retrieves a datastore entity of given kind based on the unique key in either |sKey| or |iKey|, and stores the entity to |data|.
 func KeyGet(c appengine.Context, kind string, data interface{}, sKey string, iKey int64) (err os.Error) {
-	key := datastore.NewKey(kind, sKey, iKey, nil)
+	key := datastore.NewKey(c, kind, sKey, iKey, nil)
 	err = datastore.Get(c, key, data)
 	return
 }
@@ -62,7 +62,7 @@ order string, offset int, limit int) (data []datastore.Map, err os.Error) {
 // Delete deletes a datastore entity of given kind based on the unique key found in |data|.
 func Delete(c appengine.Context, kind string, data UniqueKeyer) (err os.Error) {
 	stringId, intId := data.UniqueKey()
-	key := datastore.NewKey(kind, stringId, intId, nil)
+	key := datastore.NewKey(c, kind, stringId, intId, nil)
 	err = datastore.Delete(c, key)
 	return
 }

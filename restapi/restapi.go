@@ -10,6 +10,7 @@ import (
 	"os"
 	"io/ioutil"
 	"json"
+	"http"
 )
 
 // GetJson fetches a URL using a GET request, parses the returned JSON response, and stores the response in struct |a|.
@@ -43,9 +44,14 @@ func check(err os.Error) {
 }
 
 func getUrl(c appengine.Context, url string) []byte {
-	client := urlfetch.Client(c)
+	/*client := urlfetch.Client(c)
 	res, err := client.Get(url)
+	check(err)*/
+	req, err := http.NewRequest("GET", url, nil)
 	check(err)
+	t := &urlfetch.Transport{c, 10, true} // Set timeout to 10 seconds (instead of the default 5)
+    res, err := t.RoundTrip(req)
+    check(err)
 	defer res.Body.Close()
 	b, err := ioutil.ReadAll(res.Body)
 	check(err)

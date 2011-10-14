@@ -82,8 +82,7 @@ type newBalance struct {
 }
 
 type openOrder struct {
-	OrderType int8 "type" // 1 = Sell order, 2 = Buy order
-	//	OrderType	int8	`json:"type"`// r59 release
+	OrderType   int8 `json:"type"` // 1 = Sell order, 2 = Buy order
 	Status      int8   // 1 = Active
 	Real_status string // "open" or ?
 	Oid         string // Unique order id (but not int, e.g. "2d8dfdd1-5342-42bc-9dde-a81fdfa63920")

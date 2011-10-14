@@ -70,8 +70,7 @@ type Balance struct {
 }
 
 type openOrder struct {
-	OrderType int8 "type" // 1 = Sell order, 2 = Buy order
-	//	OrderType			int8	`json:"type"`// r59 release
+	OrderType         int8 `json:"type"` // 1 = Sell order, 2 = Buy order
 	Status            int8   // 1 = Active (which is the value for all returned order, any other value here indicates an error)
 	Oid               int64  // Unique order id
 	Symbol            string // Currency symbol (currently always "BTC")
