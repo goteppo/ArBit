@@ -1,6 +1,6 @@
 == About ArBit ==
 
-ArBit is an automated Bitcoin arbitrage trading program implemented in Go and written using Google App Engine SDK. It currently supports Mt Gox, TradeHill, and ExchB.
+ArBit is an automated Bitcoin arbitrage trading program implemented in Go and written using Google App Engine SDK. It currently supports Mt Gox and TradeHill. (ExchB was also supported until the site was closed down.)
 
 I started writing ArBit after being impressed by the concept of so called "crypto currencies", and writing an arbitrage engine sounded like a non-trivial yet small enough project I could use for learning Go. And though I'm not a big believer in Bitcoin per se (the poor economic design alone begs for the project to be forked), it's technology is very promising and it has shown that digital currencies in general have a lot of potential.
 
@@ -42,6 +42,8 @@ Q: Do arbitrage opportunities really exist?
 At the time of writing this, there seems to be enough arbitrage opportunities available that even a slow once-per-minute strategy finds them pretty much every day.
 
 But it is obvious that there are other arbitrage traders out there, so the opportunities are relatively small, won't last for too long, and mostly appear during short rallies (up or down) where one exchange moves faster than the other. And of course, open source projects such as this one are only going to make the competition tougher.
+
+UPDATE: After ExchB was shut down on 2010-10-16, the number of available arbitrage opportunities has dropped significantly.
 
 
 == Author ==

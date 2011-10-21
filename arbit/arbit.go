@@ -16,7 +16,6 @@ import (
 	"xgen"
 	"mtgox"
 	"tradehill"
-	"exchb"
 	//	"campbx"
 	"appdb"
 	"arbitrage"
@@ -29,14 +28,13 @@ import (
 const (
 	mtGox = iota
 	tradeHill
-	exchB
 	//	campBx
 	//	bitcoinica
 
 	numExchanges
 )
 
-var exchangeName = [numExchanges]string{"MtGox", "TradeHill", "ExchB" /*, "CampBX", "Bitcoinica"*/ }
+var exchangeName = [numExchanges]string{"MtGox", "TradeHill" /*, "CampBX", "Bitcoinica"*/ }
 
 var login [numExchanges]xgen.Credentials
 
@@ -109,8 +107,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 	check(err)
 	quote[tradeHill], err = tradehill.GetQuote(c)
 	check(err)
-	quote[exchB], err = exchb.GetQuote(c)
-	check(err)
 	//	quote[campBx], err = campbx.GetQuote(c) // For some reason the Unmarshal in GetJson function in api.go causes: "runtime error: invalid memory address or nil pointer dereference"
 	//	check(err)
 
@@ -145,8 +141,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 	check(err)
 	funds[tradeHill], err = tradehill.GetBalance(c, login[tradeHill])
 	check(err)
-	funds[exchB], err = exchb.GetBalance(c, login[exchB])
-	check(err)
 	//	funds[campBx], err = campbx.GetBalance(c, login[campBx])
 	//	check(err)
 
@@ -157,8 +151,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 	pending[mtGox], err = mtgox.GetOpenOrders(c, login[mtGox])
 	check(err)
 	pending[tradeHill], err = tradehill.GetOpenOrders(c, login[tradeHill])
-	check(err)
-	pending[exchB], err = exchb.GetOpenOrders(c, login[exchB])
 	check(err)
 	//	pending[campBx], err = campbx.GetOpenOrders(c, login[campBx])
 	//	check(err)
@@ -174,8 +166,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 					_, err = mtgox.CancelOrder(c, login[i], oid, 2)
 				case tradeHill:
 					_, err = tradehill.CancelOrder(c, login[i], oid)
-				case exchB:
-					_, err = exchb.CancelOrder(c, login[i], oid)
 					//					case campBx:  _, err = campbx.CancelOrder(c, login[i], oid, "Buy")
 				}
 				check(err)
@@ -192,8 +182,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 					_, err = mtgox.CancelOrder(c, login[i], oid, 1)
 				case tradeHill:
 					_, err = tradehill.CancelOrder(c, login[i], oid)
-				case exchB:
-					_, err = exchb.CancelOrder(c, login[i], oid)
 					//					case campBx:  _, err = campbx.CancelOrder(c, login[i], oid, "Sell")
 				}
 				check(err)
@@ -210,8 +198,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 	book[mtGox], err = mtgox.GetOrderBook(c)
 	check(err)
 	book[tradeHill], err = tradehill.GetOrderBook(c)
-	check(err)
-	book[exchB], err = exchb.GetOrderBook(c)
 	check(err)
 	//	book[campBx], err = campbx.GetOrderBook(c)
 	//	check(err)
@@ -245,8 +231,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 					_, err = mtgox.Buy(c, login[i], strategy.Buy[i].Price, strategy.Buy[i].Amount)
 				case tradeHill:
 					_, err = tradehill.Buy(c, login[i], strategy.Buy[i].Price, strategy.Buy[i].Amount)
-				case exchB:
-					_, err = exchb.Buy(c, login[i], strategy.Buy[i].Price, strategy.Buy[i].Amount)
 					//					case campBx: _, err = campbx.Buy(c, login[i], strategy.Buy[i].Price, strategy.Buy[i].Amount)
 				}
 				check(err)
@@ -264,8 +248,6 @@ func cronjob(w http.ResponseWriter, r *http.Request) { // Main program (to be ru
 					_, err = mtgox.Sell(c, login[i], strategy.Sell[i].Price, strategy.Sell[i].Amount)
 				case tradeHill:
 					_, err = tradehill.Sell(c, login[i], strategy.Sell[i].Price, strategy.Sell[i].Amount)
-				case exchB:
-					_, err = exchb.Sell(c, login[i], strategy.Sell[i].Price, strategy.Sell[i].Amount)
 					//					case campBx: _, err = campbx.Sell(c, login[i], strategy.Sell[i].Price, strategy.Sell[i].Amount)
 				}
 				check(err)

@@ -8,8 +8,7 @@ Known issues:
 	1. Support for Camp BX is otherwise complete but json.Unmarshal fails for some reason (maybe due to whitespaces in the field names?)
 	
 	2. Error/warning messages returned by the exchanges are ignored - for example:
-		- ExchB may return a JSON element "status" with messages such as "BTC balance too low to place sell order."
-		- TradeHill can return "error" element containing messages like "The smallest allowable transaction size is 1.00 USD."
+		- TradeHill can return a JSON element "error" with messages such as "The smallest allowable transaction size is 1.00 USD."
 
 
 FUTURE:
