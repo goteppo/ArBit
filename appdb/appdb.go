@@ -1,5 +1,5 @@
 // Copyright 2011 Teppo Salonen. All rights reserved.
-// This file is part of ArBit and distributed under the terms of the GNU LGPLv3 license.
+// This file is part of ArBit and distributed under the terms of the MIT/X11 license.
 
 // Package appdb implements basic functions for storing and retrieving data from Google App Engine's datastore.
 package appdb
