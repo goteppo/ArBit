@@ -1,5 +1,5 @@
 // Copyright 2011 Teppo Salonen. All rights reserved.
-// This file is part of ArBit and distributed under the terms of the GNU LGPLv3 license.
+// This file is part of ArBit and distributed under the terms of the MIT/X11 license.
 
 // Package xgen provides generic structures for storing data from various Bitcoin exchanges
 package xgen
