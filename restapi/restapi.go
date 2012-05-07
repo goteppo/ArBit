@@ -1,5 +1,5 @@
 // Copyright 2011 Teppo Salonen. All rights reserved.
-// This file is part of ArBit and distributed under the terms of the GNU LGPLv3 license.
+// This file is part of ArBit and distributed under the terms of the MIT/X11 license.
 
 // Package restapi implements basic functions to be used with RESTful API's returning JSON responses.
 package restapi
