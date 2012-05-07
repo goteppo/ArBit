@@ -1,5 +1,5 @@
 // Copyright 2011 Teppo Salonen. All rights reserved.
-// This program is distributed under the terms of the GNU LGPLv3 license.
+// This program is distributed under the terms of the MIT/X11 license.
 
 package arbit
 
