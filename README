@@ -1,3 +1,7 @@
+UPDATE 2012-05-06: After TradeHill shut down it's operations on 2012-02-13, and ExchB had already closed it's doors earlier, this software is no longer functional as it is (as you cannot do arbitrage with only one Bitcoin exchange).
+
+At this time I have no further plans on continuing the development of ArBit. Therefore I am also changing the licence to MIT/X11 (from LGPLv3), so feel free to modify it to your needs or incorporate the ideas to your own trading algorithms.
+
 == About ArBit ==
 
 ArBit is an automated Bitcoin arbitrage trading program implemented in Go and written using Google App Engine SDK. It currently supports Mt Gox and TradeHill. (ExchB was also supported until the site was closed down.)
@@ -6,7 +10,7 @@ I started writing ArBit after being impressed by the concept of so called "crypt
 
 This is also my first ever open source contribution, so it is mostly a personal experiment with a primary goal of making myself a better programmer, and at the same time hopefully being useful to someone else too. I wrote the program in Go because it was the one language I really wanted to learn, and the reason for using the App Engine SDK was that it just made it so much easier to get started.
 
-The project is made of several packages containing the arbitrage engine, API functions for connecting to various Bitcoin exchanges, basic methods for storing data in the App Engine datastore, etc. They are all distributed under the LGPLv3 license.
+The project is made of several packages containing the arbitrage engine, API functions for connecting to various Bitcoin exchanges, basic methods for storing data in the App Engine datastore, etc. They are all distributed under an MIT-style license.
 
 
 == Installation ==
@@ -43,7 +47,7 @@ At the time of writing this, there seems to be enough arbitrage opportunities av
 
 But it is obvious that there are other arbitrage traders out there, so the opportunities are relatively small, won't last for too long, and mostly appear during short rallies (up or down) where one exchange moves faster than the other. And of course, open source projects such as this one are only going to make the competition tougher.
 
-UPDATE: After ExchB was shut down on 2010-10-16, the number of available arbitrage opportunities has dropped significantly.
+UPDATE 2011-10-20: After ExchB was shut down on 2011-10-16, the number of available arbitrage opportunities has dropped significantly.
 
 
 == Author ==
